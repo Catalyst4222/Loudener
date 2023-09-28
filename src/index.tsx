@@ -1,4 +1,4 @@
-import { Injector, Logger, types, util, webpack } from "replugged";
+import { Injector, Logger, common, types, util, webpack } from "replugged";
 import {
   MediaEngineStoreType,
   MenuControlItemProps,
@@ -6,6 +6,7 @@ import {
   SettingsProtoUpdateAction,
 } from "./types";
 
+const { lodash: _ } = common;
 const { ContextMenuTypes } = types;
 const { findInReactTree } = util;
 
@@ -26,6 +27,8 @@ export function start(): void {
  * todo: make it a setting
  */
 function patchVolumeSlider(): void {
+  const logSliderPatch = _.throttle(logger.log, 1000)
+
   inject.utils.addMenuItem(ContextMenuTypes.UserContext, (_data, menu) => {
 
     // findInReactTree gives all sorts of fun typescript errors :D
@@ -41,7 +44,7 @@ function patchVolumeSlider(): void {
 
     if (!userVolume) return;
 
-    logger.log("Overriding volume slider")
+    logSliderPatch("Overriding volume slider")
 
     const oldControl = userVolume.props.control;
 
@@ -61,6 +64,8 @@ function patchVolumeSlider(): void {
  * 200 is accepted by the api, but won't happen naturally
  */
 function patchAudioUpdate(): void {
+  const logAudioUpdate = _.throttle(logger.log, 1000)
+
   const audioHandler = MediaEngineStore._dispatcher._actionHandlers
     .getOrderedActionHandlers({ type: "AUDIO_SET_LOCAL_VOLUME" })
     .find((handler) => handler.name == "MediaEngineStore");
@@ -75,7 +80,7 @@ function patchAudioUpdate(): void {
       return;
     }
 
-    logger.log("Masking increased volume from the api")
+    logAudioUpdate("Masking increased volume from the api")
 
     const { volume } = action;
     action.volume = 200;
