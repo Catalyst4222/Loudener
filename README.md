@@ -2,4 +2,4 @@
 
 Set user and stream volumes to over 200%
 
-[![Install in Replugged](https://img.shields.io/badge/-Install%20in%20Replugged-blue?style=for-the-badge&logo=none)](https://replugged.dev/install?identifier=catalyst4222/Loudener&source=github)
+![image](https://github.com/Catalyst4222/Loudener/assets/84055084/27ea18a0-ed7f-4973-a8e5-f44e3818d914)
