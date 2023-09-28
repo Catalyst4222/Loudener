@@ -1,20 +1,20 @@
 {
-  "id": "dev.replugged.PluginTemplate",
-  "name": "Plugin Template",
-  "description": "A plugin template",
+  "id": "dev.catalyst.Loudener",
+  "name": "Loudener",
+  "description": "Set volumes over 200%",
   "author": {
-    "name": "replugged",
+    "name": "Catalyst",
     "discordID": "1000992611840049192",
-    "github": "replugged-org"
+    "github": "catalyst4222"
   },
-  "version": "1.0.0",
+  "version": "0.0.1",
   "updater": {
     "type": "github",
-    "id": "replugged-org/plugin-template"
+    "id": "catalyst4222/Loudener"
   },
   "license": "MIT",
   "type": "replugged-plugin",
-  "renderer": "src/index.ts",
-  "source": "https://github.com/replugged-org/plugin-template",
+  "renderer": "src/index.tsx",
+  "source": "https://github.com/catalyst4222/Loudener",
   "image": ["https://i.imgur.com/14CNs3a.png?CHANGE-THIS-URL"]
 }
